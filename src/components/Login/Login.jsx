@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
-    const {logInUser} = useContext(AuthContext);
+    const {logInUser, LogInWithGoogle} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogin = (e) => {
         e.preventDefault();
@@ -20,6 +20,15 @@ const Login = () => {
         })
         .catch(error => {
             console.log(error)
+        })
+    }
+    const handleGoogleLogIn = () => {
+        LogInWithGoogle()
+        .then(result => {
+            console.log(result);
+        })
+        .catch(error => {
+            console.log(error);
         })
     }
     return (
@@ -45,10 +54,12 @@ const Login = () => {
                                 required/>
                                 <div><a className="link link-hover">Forgot password?</a></div>
                                 <button className="btn btn-primary mt-4">Login</button>
+                               
                                 <p>New Here? Please <Link className="text-bold text-primary text-base" to='/register'>Register</Link></p>
                             </fieldset>
                         </div>
                     </form>
+                    <button onClick={handleGoogleLogIn} className="btn btn-primary mt-4">Sign In With Google</button>
                 </div>
             </div>
         </div>
