@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const handleLogin = (e) => {
@@ -29,6 +30,7 @@ const Login = () => {
                                 required/>
                                 <div><a className="link link-hover">Forgot password?</a></div>
                                 <button className="btn btn-primary mt-4">Login</button>
+                                <p>New Here? Please <Link className="text-bold text-primary text-base" to='/register'>Register</Link></p>
                             </fieldset>
                         </div>
                     </form>
